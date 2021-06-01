@@ -12,7 +12,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: {}
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(400)
           expect(response.body.error.code).to.eq('FULLNAME_REQUIRED')
