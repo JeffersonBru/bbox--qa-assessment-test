@@ -233,13 +233,33 @@ describe('Prolancer - Register', function () {
         })
     })
 
+    it('POST v1/users - success with token', () => {
+        let prolancer = User.getNewProlancer();
+        cy.log(prolancer)
+        cy.makeReq({ 
+            method: 'POST',
+            url: Cypress.env('bossa_api'),
+            body: {
+                "user": prolancer,
+                "token": Cypress.env('bossa_api_token')
+            }
+        })
+        .should((response) => {
+          expect(response.status).to.eq(200)
+          expect(response.body.token).not.be.empty
+          expect(response.body.user.fullName).to.eq(prolancer.fullName)
+          expect(response.body.user.email).to.eq(prolancer.email)
+          expect(response.body.user.password).not.be.empty
+        })
+    })
+
     it('POST v1/users - success', () => {
         let prolancer = User.getNewProlancer();
         cy.log(prolancer)
         cy.makeReq({ 
             method: 'POST',
             url: Cypress.env('bossa_api'),
-            body: prolancer
+            body: prolancer,
         })
         .should((response) => {
           expect(response.status).to.eq(200)

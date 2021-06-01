@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('makeReq', (options, token) => {
+Cypress.Commands.add('makeReq', (options) => {
     const requestOptions = {
       ...options,
       headers: options.headers,
