@@ -59,6 +59,24 @@ describe('Prolancer - Register', function () {
         })
     })
 
+    it('POST v1/users -  Field loginType not exists', () => {
+        let prolancer = User.getNewProlancer();
+        prolancer.loginType = 'password'
+        cy.log(prolancer)
+        cy.makeReq({ 
+            method: 'POST',
+            url: Cypress.env('bossa_api'),
+            body: prolancer,
+        })
+        .should((response) => {
+            expect(response.status).to.eq(400)
+            expect(response.body.error.code).to.eq('INVALID_LOGINTYPE')
+            expect(response.body.error.message).to.eq('O loginType é inválido')
+            expect(response.body.error.type).to.eq('ApiError')
+            expect(response.body.requestId).not.be.empty
+        })
+    })
+
     it('POST v1/users -  Field fullName null', () => {
         let prolancer = User.getNewProlancer();
         prolancer.fullName = null
