@@ -4,8 +4,8 @@
   "description": "Chalanger",
   "main": "index.js",
   "dependencies": {
-    "cypress": "^7.4.0",
-    "chance": "^1.1.7"
+    "cypress": "7.4.0",
+    "chance": "1.1.7"
   },
   "scripts": {
     "cy:e2e": "cypress run --spec 'cypress/integration/e2e/*.spec.js' --browser",
