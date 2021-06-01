@@ -1,0 +1,25 @@
+{
+  "name": "bbox-qa-test",
+  "version": "0.0.1",
+  "description": "Chalanger",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^7.4.0",
+    "chance": "^1.1.7"
+  },
+  "scripts": {
+    "cy:e2e": "cypress run --spec 'cypress/integration/e2e/*.spec.js' --browser",
+    "cy:api": "cypress run --spec 'cypress/integration/api/*.spec.js' --browser",
+    "cy:all": "cypress run --spec 'cypress/integration/*/**.spec.js' --browser"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffersonBru/bbox--qa-assessment-test.git"
+  },
+  "author": "jefferson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeffersonBru/bbox--qa-assessment-test/issues"
+  },
+  "homepage": "https://github.com/JeffersonBru/bbox--qa-assessment-test#readme"
+}
