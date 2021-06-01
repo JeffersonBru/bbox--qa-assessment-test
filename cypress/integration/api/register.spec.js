@@ -4,6 +4,24 @@ import User from '../../support/user'
 
 describe('Prolancer - Register', function () {
 
+    it('POST v1/users -  Body empty', () => {
+        let prolancer = User.getNewProlancer();
+        prolancer.fullName = null
+        cy.log(prolancer)
+        cy.makeReq({ 
+            method: 'POST',
+            url: Cypress.env('bossa_api'),
+            body: {}
+            })
+        .should((response) => {
+          expect(response.status).to.eq(400)
+          expect(response.body.error.code).to.eq('FULLNAME_REQUIRED')
+          expect(response.body.error.message).to.eq("\"fullName\" é obrigatório")
+          expect(response.body.error.type).to.eq('ApiError')
+          expect(response.body.requestId).not.be.empty
+        })
+    })
+
     it('POST v1/users -  Field fullName null', () => {
         let prolancer = User.getNewProlancer();
         prolancer.fullName = null
