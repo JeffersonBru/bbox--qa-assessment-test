@@ -22,6 +22,43 @@ describe('Prolancer - Register', function () {
         })
     })
 
+    it('POST v1/users -  Field loginType null', () => {
+        let prolancer = User.getNewProlancer();
+        prolancer.loginType = null
+        cy.log(prolancer)
+        cy.makeReq({ 
+            method: 'POST',
+            url: Cypress.env('bossa_api'),
+            body: prolancer
+        })
+        .should((response) => {
+          expect(response.status).to.eq(400)
+          expect(response.body.error.code).to.eq('LOGINTYPE_REQUIRED')
+          expect(response.body.error.message).to.eq("\"loginType\" é obrigatório")
+          expect(response.body.error.type).to.eq('ApiError')
+          expect(response.body.requestId).not.be.empty
+        })
+    })
+
+
+    it('POST v1/users -  Field loginType empty', () => {
+        let prolancer = User.getNewProlancer();
+        prolancer.loginType = ""
+        cy.log(prolancer)
+        cy.makeReq({ 
+            method: 'POST',
+            url: Cypress.env('bossa_api'),
+            body: prolancer
+        })
+        .should((response) => {
+          expect(response.status).to.eq(400)
+          expect(response.body.error.code).to.eq('LOGINTYPE_REQUIRED')
+          expect(response.body.error.message).to.eq("\"loginType\" é obrigatório")
+          expect(response.body.error.type).to.eq('ApiError')
+          expect(response.body.requestId).not.be.empty
+        })
+    })
+
     it('POST v1/users -  Field fullName null', () => {
         let prolancer = User.getNewProlancer();
         prolancer.fullName = null
@@ -30,7 +67,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(400)
           expect(response.body.error.code).to.eq('FULLNAME_REQUIRED')
@@ -48,7 +85,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(400)
           expect(response.body.error.code).to.eq('FULLNAME_REQUIRED')
@@ -66,7 +103,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(400)
           expect(response.body.error.code).to.eq('INVALID_EMAIL')
@@ -84,7 +121,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(400)
           expect(response.body.error.code).to.eq('INVALID_EMAIL')
@@ -102,7 +139,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(400)
           expect(response.body.error.code).to.eq('INVALID_EMAIL')
@@ -119,7 +156,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(200)
           expect(response.body.token).not.be.empty
@@ -131,7 +168,7 @@ describe('Prolancer - Register', function () {
                 method: 'POST',
                 url: Cypress.env('bossa_api'),
                 body: prolancer
-                })
+            })
             .should((response) => {
                 expect(response.status).to.eq(400)
                 expect(response.body.error.code).to.eq('EMAIL_REGISTERED')
@@ -150,7 +187,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(400)
           expect(response.body.error.code).to.eq('INVALID_PASSWORD')
@@ -168,7 +205,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(400)
           expect(response.body.error.code).to.eq('INVALID_PASSWORD')
@@ -186,7 +223,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(400)
           expect(response.body.error.code).to.eq('INVALID_PASSWORD')
@@ -203,7 +240,7 @@ describe('Prolancer - Register', function () {
             method: 'POST',
             url: Cypress.env('bossa_api'),
             body: prolancer
-            })
+        })
         .should((response) => {
           expect(response.status).to.eq(200)
           expect(response.body.token).not.be.empty

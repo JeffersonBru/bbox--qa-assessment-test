@@ -6,7 +6,8 @@ class UserProlancer{
         let prolancer = new UserProlancer();
         prolancer.fullName = `Automation - ${chance.name()}`,
         prolancer.email =  `prolancer.${chance.email()}`,
-        prolancer.password = chance.cpf({formatted: false})
+        prolancer.password = chance.cpf({formatted: false}),
+        prolancer.loginType = "email"
         return prolancer
     }
 }
