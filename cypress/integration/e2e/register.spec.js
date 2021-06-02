@@ -67,4 +67,15 @@ describe('Prolancer - Register', function () {
         .pressButtonConfirmRegister()
         .validateStatusRequestRegister(prolancer)
     })
+
+    it('Register email alredy', () => {
+        Register.informInputFullName(prolancer.fullName)
+        .informInputEmail(prolancer.email)
+        .inforInputPassword(prolancer.password)
+        .informInputConfirmPassword(prolancer.password)
+        .pressButtonConfirmRegister()
+        .pressCheckTerms()
+        .pressButtonConfirmRegister()
+        .validateStatusRequestRegisterInvalid(msg.invalidReqEmailAlredy)
+    })
 })

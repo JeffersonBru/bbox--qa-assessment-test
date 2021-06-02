@@ -61,6 +61,18 @@ class Register{
         return this
     }
 
+
+    validateStatusRequestRegisterInvalid(msg){
+        cy.wait('@registerUser').then(intercept =>{
+            expect(intercept.response.statusCode).to.eq(400)
+            expect(intercept.response.body.error.code).to.eq(msg.code)
+            expect(intercept.response.body.error.message).to.eq(msg.message)
+            expect(intercept.response.body.error.type).to.eq(msg.type)
+            expect(intercept.response.body.requestId).not.be.empty
+        })
+        return this
+    }
+
 }
 
 export default new Register()
