@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 import User from '../../support/user'
+import Register from '../../support/register'
 
 describe('Prolancer - Register', function () {
 
@@ -14,11 +15,13 @@ describe('Prolancer - Register', function () {
             body: {}
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('FULLNAME_REQUIRED')
-          expect(response.body.error.message).to.eq("\"fullName\" é obrigatório")
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'FULLNAME_REQUIRED',
+                    message: "\"fullName\" é obrigatório",
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -32,11 +35,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('LOGINTYPE_REQUIRED')
-          expect(response.body.error.message).to.eq("\"loginType\" é obrigatório")
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'LOGINTYPE_REQUIRED',
+                    message: "\"loginType\" é obrigatório",
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -51,11 +56,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('LOGINTYPE_REQUIRED')
-          expect(response.body.error.message).to.eq("\"loginType\" é obrigatório")
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'LOGINTYPE_REQUIRED',
+                    message: "\"loginType\" é obrigatório",
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -69,11 +76,13 @@ describe('Prolancer - Register', function () {
             body: prolancer,
         })
         .should((response) => {
-            expect(response.status).to.eq(400)
-            expect(response.body.error.code).to.eq('INVALID_LOGINTYPE')
-            expect(response.body.error.message).to.eq('O loginType é inválido')
-            expect(response.body.error.type).to.eq('ApiError')
-            expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'INVALID_LOGINTYPE',
+                    message: 'O loginType é inválido',
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -87,11 +96,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('FULLNAME_REQUIRED')
-          expect(response.body.error.message).to.eq("\"fullName\" é obrigatório")
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'FULLNAME_REQUIRED',
+                    message: "\"fullName\" é obrigatório",
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -105,11 +116,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('FULLNAME_REQUIRED')
-          expect(response.body.error.message).to.eq("\"fullName\" é obrigatório")
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'FULLNAME_REQUIRED',
+                    message: "\"fullName\" é obrigatório",
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -123,11 +136,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('INVALID_EMAIL')
-          expect(response.body.error.message).to.eq('O e-mail é inválido')
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'INVALID_EMAIL',
+                    message: 'O e-mail é inválido',
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -141,11 +156,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('INVALID_EMAIL')
-          expect(response.body.error.message).to.eq('O e-mail é inválido')
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'INVALID_EMAIL',
+                    message: 'O e-mail é inválido',
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -159,11 +176,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('INVALID_EMAIL')
-          expect(response.body.error.message).to.eq('O e-mail é inválido')
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'INVALID_EMAIL',
+                    message: 'O e-mail é inválido',
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -176,11 +195,7 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(200)
-          expect(response.body.token).not.be.empty
-          expect(response.body.user.fullName).to.eq(prolancer.fullName)
-          expect(response.body.user.email).to.eq(prolancer.email)
-          expect(response.body.user.password).not.be.empty
+            Register.validateRequestSuccess(response, prolancer)
         }).then(()=>{
             cy.makeReq({ 
                 method: 'POST',
@@ -188,11 +203,13 @@ describe('Prolancer - Register', function () {
                 body: prolancer
             })
             .should((response) => {
-                expect(response.status).to.eq(400)
-                expect(response.body.error.code).to.eq('EMAIL_REGISTERED')
-                expect(response.body.error.message).to.eq('E-mail já cadastrado')
-                expect(response.body.error.type).to.eq('ApiError')
-                expect(response.body.requestId).not.be.empty
+                Register.validateRequestFail(response,
+                    {
+                        code: 'EMAIL_REGISTERED',
+                        message: 'E-mail já cadastrado',
+                        type: 'ApiError'
+                    }
+                )
             })
         })
     })
@@ -207,11 +224,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('INVALID_PASSWORD')
-          expect(response.body.error.message).to.eq('O password deve ter no mínimo 8 caracteres')
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'INVALID_PASSWORD',
+                    message: 'O password deve ter no mínimo 8 caracteres',
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -225,11 +244,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('INVALID_PASSWORD')
-          expect(response.body.error.message).to.eq('O password deve ter no mínimo 8 caracteres')
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'INVALID_PASSWORD',
+                    message: 'O password deve ter no mínimo 8 caracteres',
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -243,11 +264,13 @@ describe('Prolancer - Register', function () {
             body: prolancer
         })
         .should((response) => {
-          expect(response.status).to.eq(400)
-          expect(response.body.error.code).to.eq('INVALID_PASSWORD')
-          expect(response.body.error.message).to.eq('O password deve ter no mínimo 8 caracteres')
-          expect(response.body.error.type).to.eq('ApiError')
-          expect(response.body.requestId).not.be.empty
+            Register.validateRequestFail(response,
+                {
+                    code: 'INVALID_PASSWORD',
+                    message: 'O password deve ter no mínimo 8 caracteres',
+                    type: 'ApiError'
+                }
+            )
         })
     })
 
@@ -260,11 +283,7 @@ describe('Prolancer - Register', function () {
             body: prolancer,
         })
         .should((response) => {
-          expect(response.status).to.eq(200)
-          expect(response.body.token).not.be.empty
-          expect(response.body.user.fullName).to.eq(prolancer.fullName)
-          expect(response.body.user.email).to.eq(prolancer.email)
-          expect(response.body.user.password).not.be.empty
+            Register.validateRequestSuccess(response, prolancer)
         })
     })
 
